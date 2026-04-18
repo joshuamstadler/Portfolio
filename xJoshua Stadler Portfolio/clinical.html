@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clinical Practice — Joshua Stadler, RN</title>
+  <meta name="description" content="Registered Nurse at Detroit Receiving Hospital — a Level I Trauma Center. Charge RN, clinical preceptor, ACLS/BLS certified. Grounded in trauma-informed, psychology-first patient care." />
+  <meta property="og:title" content="Clinical Practice — Joshua Stadler, RN" />
+  <meta property="og:description" content="Registered Nurse at Detroit Receiving Hospital, Level I Trauma Center. Charge RN and clinical preceptor." />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,600,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="shared.css" />
+
+  <style>
+    /* ---- CLINICAL PAGE SPECIFIC ---- */
+
+    /* Role Card */
+    .role-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-8);
+      margin-bottom: var(--space-10);
+    }
+
+    .role-card-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--space-4);
+      margin-bottom: var(--space-6);
+      padding-bottom: var(--space-6);
+      border-bottom: 1px solid var(--color-divider);
+    }
+
+    .role-card-meta {
+      flex: 1;
+      min-width: 240px;
+    }
+
+    .role-card-title {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      font-weight: 900;
+      color: var(--color-text);
+      letter-spacing: -0.01em;
+      margin-bottom: var(--space-2);
+    }
+
+    .role-card-org {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      font-weight: 500;
+      margin-bottom: var(--space-1);
+    }
+
+    .role-card-location {
+      font-size: var(--text-xs);
+      color: var(--color-text-faint);
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .role-card-location svg {
+      flex-shrink: 0;
+    }
+
+    .role-card-narrative {
+      font-size: var(--text-base);
+      color: var(--color-text-muted);
+      line-height: 1.75;
+      max-width: 68ch;
+      margin-bottom: var(--space-6);
+    }
+
+    /* Certs Grid */
+    .certs-section {
+      padding-block: clamp(var(--space-12), 6vw, var(--space-20));
+      background: var(--color-surface);
+    }
+
+    .certs-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      margin-top: var(--space-8);
+    }
+
+    .cert-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-3) var(--space-5);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--color-text);
+      transition: border-color var(--transition), background var(--transition), transform var(--transition);
+    }
+
+    .cert-badge:hover {
+      border-color: color-mix(in srgb, var(--color-primary) 40%, var(--color-border));
+      background: color-mix(in srgb, var(--color-primary) 5%, var(--color-bg));
+      transform: translateY(-1px);
+    }
+
+    .cert-badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--color-primary);
+      flex-shrink: 0;
+    }
+
+    .cert-badge-count {
+      font-size: var(--text-xs);
+      color: var(--color-text-faint);
+      font-weight: 400;
+    }
+
+    /* Psychology Section */
+    .psych-section {
+      padding-block: clamp(var(--space-12), 6vw, var(--space-20));
+    }
+
+    .psych-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-12);
+      align-items: start;
+      margin-top: var(--space-10);
+    }
+
+    @media (max-width: 700px) {
+      .psych-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-8);
+      }
+    }
+
+    .psych-narrative {
+      font-size: var(--text-base);
+      color: var(--color-text-muted);
+      line-height: 1.75;
+      margin-bottom: var(--space-6);
+    }
+
+    .psych-pullquote {
+      border-left: 3px solid var(--color-primary);
+      padding: var(--space-5) var(--space-6);
+      background: color-mix(in srgb, var(--color-primary) 6%, transparent);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      margin-top: var(--space-6);
+    }
+
+    .psych-pullquote q {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      font-weight: 800;
+      color: var(--color-text);
+      letter-spacing: -0.01em;
+      line-height: 1.35;
+      quotes: "\201C""\201D";
+    }
+
+    .psych-pullquote-attr {
+      display: block;
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      margin-top: var(--space-3);
+      font-weight: 500;
+    }
+
+    .coursework-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .coursework-item {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-3);
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      padding: var(--space-3) var(--space-4);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      line-height: 1.5;
+    }
+
+    .coursework-item-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--color-primary);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 5px;
+    }
+
+    .coursework-item strong {
+      color: var(--color-text);
+      font-weight: 600;
+      display: block;
+    }
+
+    .coursework-item .course-note {
+      font-size: var(--text-xs);
+      color: var(--color-primary);
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    /* Future Direction */
+    .future-section {
+      padding-block: clamp(var(--space-12), 6vw, var(--space-20));
+      background: var(--color-surface);
+    }
+
+    .future-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: var(--space-5);
+      margin-top: var(--space-8);
+    }
+
+    .future-card {
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .future-card-icon {
+      width: 40px;
+      height: 40px;
+      background: color-mix(in srgb, var(--color-primary) 12%, transparent);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-primary);
+    }
+
+    .future-card-title {
+      font-family: var(--font-display);
+      font-size: var(--text-base);
+      font-weight: 800;
+      color: var(--color-text);
+    }
+
+    .future-card-desc {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      line-height: 1.65;
+    }
+
+    /* Nav back link */
+    .breadcrumb {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      font-weight: 500;
+      margin-bottom: var(--space-5);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+
+    .breadcrumb:hover {
+      color: var(--color-primary);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="site-nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Joshua Stadler home">
+        <svg width="30" height="30" viewBox="0 0 30 30" fill="none"><rect width="30" height="30" rx="7" fill="var(--color-primary)"/><text x="15" y="21" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="800" fill="#fff">JS</text></svg>
+        <span class="nav-logo-name">Joshua Stadler</span>
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="clinical.html" class="active">Clinical</a></li>
+        <li><a href="zone.html">Zone</a></li>
+        <li><a href="built.html">Built</a></li>
+        <li><a href="tech.html">Tech</a></li>
+        <li><a href="education.html">Education</a></li>
+      </ul>
+      <div class="nav-right">
+        <button class="theme-btn" data-theme-toggle aria-label="Toggle theme"></button>
+        <a href="mailto:info@joshuamstadler.com" class="btn-contact">Contact</a>
+        <button class="hamburger" id="nav-toggle" aria-expanded="false" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+      <a href="index.html">Home</a>
+      <a href="clinical.html" class="active">Clinical</a>
+      <a href="zone.html">Zone Entertainment</a>
+      <a href="built.html">Things I Built</a>
+      <a href="tech.html">IT &amp; Systems</a>
+      <a href="education.html">Education</a>
+      <a href="mailto:info@joshuamstadler.com">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero" aria-labelledby="clinical-title">
+      <div class="container">
+        <a href="index.html" class="breadcrumb" aria-label="Back to home">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          Back to Home
+        </a>
+        <p class="page-eyebrow" aria-label="Section: Clinical Practice">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          Clinical Practice
+        </p>
+        <h1 class="page-title" id="clinical-title">Where care meets leadership.</h1>
+        <p class="page-lead">I'm a Registered Nurse at Detroit Receiving Hospital — a Level I Trauma Center — where I've grown from bedside staff nurse to Charge RN and clinical preceptor. My practice is grounded in benevolence-first care and trauma-informed thinking.</p>
+      </div>
+    </section>
+
+    <!-- CURRENT ROLE -->
+    <section class="section" aria-labelledby="role-heading">
+      <div class="container">
+        <p class="section-label">Current Role</p>
+        <h2 class="section-title" id="role-heading">Where I work today</h2>
+
+        <div class="role-card reveal">
+          <div class="role-card-header">
+            <div class="role-card-meta">
+              <h3 class="role-card-title">Registered Nurse — Charge RN &amp; Preceptor</h3>
+              <p class="role-card-org">Tenet Health · Detroit Medical Center · Detroit Receiving Hospital</p>
+              <p class="role-card-location">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Detroit, MI · 2024 – Present · Level I Trauma Center
+              </p>
+            </div>
+            <span class="badge badge-live" aria-label="Status: Active">Active</span>
+          </div>
+
+          <p class="role-card-narrative">
+            Detroit Receiving Hospital is one of Michigan's busiest Level I Trauma Centers — the unit runs fast, and the margin for error is small. As Charge RN, I carry clinical decision authority for the shift: resource allocation, staffing adjustments, escalation calls, and the operational rhythm of the floor. As a preceptor, I guide newly licensed nurses through unit orientation — not just skills, but judgment, communication, and what it actually means to be responsible for another person's care.
+          </p>
+
+          <ul class="prose-list" role="list">
+            <li><strong>Charge RN responsibilities:</strong> clinical decision authority, resource coordination, and staffing management across the shift</li>
+            <li><strong>Preceptor:</strong> onboarding newly licensed nurses through unit orientation, clinical skill development, and professional judgment formation</li>
+            <li>High-acuity trauma care in a Level I environment — rapid assessment, multidisciplinary coordination, and crisis stabilization</li>
+            <li>Cerner EHR documentation; ACLS and BLS certified and current</li>
+            <li>Michigan RN License #4422078844</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLINICAL CERTIFICATIONS -->
+    <section class="certs-section" aria-labelledby="certs-heading">
+      <div class="container">
+        <p class="section-label">Certifications &amp; Training</p>
+        <h2 class="section-title" id="certs-heading">Clinical credentials</h2>
+        <p class="section-body">A combination of life-saving clinical certifications, health informatics proficiencies, patient safety training, and research ethics credentials — built over time, kept current.</p>
+
+        <div class="certs-grid reveal">
+          <div class="cert-badge"><span class="cert-badge-dot" aria-hidden="true"></span>ACLS</div>
+          <div class="cert-badge"><span class="cert-badge-dot" aria-hidden="true"></span>BLS</div>
+          <div class="cert-badge"><span class="cert-badge-dot" aria-hidden="true"></span>Omnicell eMAR</div>
+          <div class="cert-badge"><span class="cert-badge-dot" aria-hidden="true"></span>Epic EHR</div>
+          <div class="cert-badge"><span class="cert-badge-dot" aria-hidden="true"></span>EHAC</div>
+          <div class="cert-badge"><span class="cert-badge-dot" aria-hidden="true"></span>Stop the Bleed</div>
+          <div class="cert-badge"><span class="cert-badge-dot" aria-hidden="true"></span>IHI Patient Safety</div>
+          <div class="cert-badge"><span class="cert-badge-dot" aria-hidden="true"></span>Phlebotomy</div>
+          <div class="cert-badge"><span class="cert-badge-dot" aria-hidden="true"></span>Human Trafficking Training</div>
+          <div class="cert-badge"><span class="cert-badge-dot" aria-hidden="true"></span>Implicit Bias Training</div>
+          <div class="cert-badge">
+            <span class="cert-badge-dot" aria-hidden="true"></span>
+            CITI Research Certifications
+            <span class="cert-badge-count">(3)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PSYCHOLOGY & PATIENT-CENTERED CARE -->
+    <section class="psych-section" aria-labelledby="psych-heading">
+      <div class="container">
+        <p class="section-label">Philosophy</p>
+        <h2 class="section-title" id="psych-heading">Psychology &amp; Patient-Centered Care</h2>
+
+        <div class="psych-grid">
+          <!-- Left: Narrative -->
+          <div class="reveal">
+            <p class="psych-narrative">
+              Nursing is often framed as a technical discipline — protocols, assessments, interventions. That framework is necessary, but it's not sufficient. I came into clinical practice with deep exposure to psychology, and it changed how I see the work. Every patient in a Level I trauma environment is experiencing something that goes beyond their chief complaint. Fear, trauma, distrust, and loss don't disappear because someone is lying in a hospital bed — they shape everything.
+            </p>
+            <p class="psych-narrative">
+              Trauma-informed care isn't a checkbox in my practice; it's a lens I apply before I walk into a room. Understanding how stress, fear, and prior experiences shape behavior makes me a better clinician — not softer, but more accurate. Empathy, applied with clinical precision, is one of the most powerful diagnostic tools I have.
+            </p>
+
+            <blockquote class="psych-pullquote">
+              <q>Empathy isn't a soft skill — it's a clinical one.</q>
+              <cite class="psych-pullquote-attr">— Joshua Stadler, RN</cite>
+            </blockquote>
+          </div>
+
+          <!-- Right: Coursework -->
+          <div class="reveal">
+            <p class="section-label" style="margin-bottom: var(--space-5);">Relevant Coursework</p>
+            <ul class="coursework-list" role="list" aria-label="Relevant psychology and nursing coursework">
+              <li class="coursework-item">
+                <span class="coursework-item-dot" aria-hidden="true"></span>
+                <div>
+                  <strong>Psychology</strong>
+                  Foundational framework for understanding behavior, cognition, and human response to stress and illness.
+                </div>
+              </li>
+              <li class="coursework-item">
+                <span class="coursework-item-dot" aria-hidden="true"></span>
+                <div>
+                  <strong>Health Psychology</strong>
+                  The intersection of psychological factors and physical health — directly applicable at the bedside.
+                </div>
+              </li>
+              <li class="coursework-item">
+                <span class="coursework-item-dot" aria-hidden="true"></span>
+                <div>
+                  <strong>Life-Span Development</strong>
+                  Understanding patient context across the full developmental spectrum — from pediatric to geriatric care.
+                </div>
+              </li>
+              <li class="coursework-item">
+                <span class="coursework-item-dot" aria-hidden="true"></span>
+                <div>
+                  <strong>Research Design in Psychology</strong>
+                  Foundations of evidence appraisal and research literacy that inform evidence-based clinical practice.
+                </div>
+              </li>
+              <li class="coursework-item">
+                <span class="coursework-item-dot" aria-hidden="true"></span>
+                <div>
+                  <strong>NRS 3016 — Nursing Care of Individuals: Behavioral &amp; Mental Health</strong>
+                  <span class="course-note">Dean's List semester · Grade: A</span>
+                  Psychiatric and behavioral health nursing with a focus on therapeutic communication, mental status assessment, and psychopharmacology.
+                </div>
+              </li>
+              <li class="coursework-item">
+                <span class="coursework-item-dot" aria-hidden="true"></span>
+                <div>
+                  <strong>Trauma-Informed Care for Healthcare</strong>
+                  Evidence-based framework for delivering care that accounts for prior trauma, reduces re-traumatization risk, and builds therapeutic trust.
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FUTURE DIRECTION -->
+    <section class="future-section" aria-labelledby="future-heading">
+      <div class="container">
+        <p class="section-label">Looking Forward</p>
+        <h2 class="section-title" id="future-heading">Where I'm headed.</h2>
+        <p class="section-body">My current practice is grounding — and it's pointing me toward what comes next. Two directions are pulling at me, and they're not as separate as they might seem.</p>
+
+        <div class="future-cards">
+          <div class="future-card reveal">
+            <div class="future-card-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+              </svg>
+            </div>
+            <h3 class="future-card-title">Psychiatric Nursing &amp; NP Pathway</h3>
+            <p class="future-card-desc">My psychology background and clinical experience with behavioral health patients in a trauma setting have made clear that psychiatric nursing is where I want to go deeper. The Nurse Practitioner pathway — especially psychiatric-mental health NP — is the natural next chapter. I want to prescribe, diagnose, and build longer-term therapeutic relationships than bedside nursing allows.</p>
+          </div>
+
+          <div class="future-card reveal">
+            <div class="future-card-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2"/>
+                <path d="M8 21h8M12 17v4"/>
+              </svg>
+            </div>
+            <h3 class="future-card-title">Nursing Informatics</h3>
+            <p class="future-card-desc">I maintain enterprise-grade IT infrastructure as a side practice — not as a hobby, but because I understand systems thinking at a technical level that most nurses don't. Nursing informatics sits at the intersection of clinical workflow and technology design. EHR implementation, clinical decision support, and health data systems are areas where my background gives me a rare vantage point, and I intend to use it.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© 2026 Joshua Stadler</span>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="index.html">Home</a>
+        <a href="clinical.html" class="active">Clinical</a>
+        <a href="zone.html">Zone</a>
+        <a href="built.html">Built</a>
+        <a href="tech.html">Tech</a>
+        <a href="education.html">Education</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="shared.js"></script>
+<script data-pplx-inline-edit>
+(function(){
+  if(window===window.top)return;
+  function inlineAll(orig,clone){
+    if(orig.nodeType!==1)return;
+    try{
+      var cs=getComputedStyle(orig);
+      var t='';
+      for(var i=0;i<cs.length;i++){t+=cs[i]+':'+cs.getPropertyValue(cs[i])+';';}
+      clone.style.cssText=t;
+    }catch(e){}
+    var oc=orig.children,cc=clone.children;
+    for(var j=0;j<oc.length&&j<cc.length;j++){inlineAll(oc[j],cc[j]);}
+  }
+  function stripExternal(clone){
+    var imgs=clone.querySelectorAll('img');
+    for(var i=0;i<imgs.length;i++){
+      var s=imgs[i].getAttribute('src');
+      if(s&&!s.startsWith('data:'))imgs[i].removeAttribute('src');
+    }
+    var all=clone.querySelectorAll('*');
+    for(var i=0;i<all.length;i++){
+      var st=all[i].style.cssText;
+      if(st&&st.indexOf('url(')>=0){
+        all[i].style.cssText=st.replace(/url\(["']?(?!data:)[^)"']*["']?\)/gi,'none');
+      }
+    }
+  }
+  var scrollRaf=0;
+  function emitScroll(){
+    scrollRaf=0;
+    var x=window.scrollX||window.pageXOffset||0;
+    var y=window.scrollY||window.pageYOffset||0;
+    window.parent.postMessage({type:'INLINE_EDIT_SCROLL',scrollX:x,scrollY:y},'*');
+  }
+  window.addEventListener('scroll',function(){
+    if(scrollRaf)return;
+    scrollRaf=requestAnimationFrame(emitScroll);
+  },{passive:true,capture:true});
+  emitScroll();
+  window.addEventListener('message',function(e){
+    if(!e.data||e.data.type!=='INLINE_EDIT_CAPTURE_REQUEST')return;
+    var scrollX=window.scrollX||window.pageXOffset||0;
+    var scrollY=window.scrollY||window.pageYOffset||0;
+    var w=window.innerWidth,h=window.innerHeight;
+    try{
+      var clone=document.documentElement.cloneNode(true);
+      var rm=clone.querySelectorAll('script,link[rel="stylesheet"],style');
+      for(var i=0;i<rm.length;i++){rm[i].remove();}
+      inlineAll(document.documentElement,clone);
+      stripExternal(clone);
+      var html=new XMLSerializer().serializeToString(clone);
+      var svg='<svg xmlns="http://www.w3.org/2000/svg" width="'+w+'" height="'+h+'">'
+        +'<foreignObject width="100%" height="100%">'
+        +'<div xmlns="http://www.w3.org/1999/xhtml" style="width:'+w+'px;height:'+h+'px;overflow:hidden">'
+        +'<div style="transform:translate(-'+scrollX+'px,-'+scrollY+'px);transform-origin:top left">'
+        +html+'</div></div></foreignObject></svg>';
+      var svgUrl='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+      var img=new Image();
+      img.onload=function(){
+        var c=document.createElement('canvas');c.width=w;c.height=h;
+        c.getContext('2d').drawImage(img,0,0);
+        window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:c.toDataURL('image/png'),scrollX:scrollX,scrollY:scrollY},'*');
+      };
+      img.onerror=function(){
+        window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:null,scrollX:scrollX,scrollY:scrollY},'*');
+      };
+      img.src=svgUrl;
+    }catch(err){
+      window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:null,scrollX:scrollX,scrollY:scrollY},'*');
+    }
+  });
+})();
+</script></body>
+</html>
